@@ -35,8 +35,13 @@ const cart = [
 
 //CODE HERE
 
-// const summedPrice = cart.reduce(/* CALLBACK HERE */)
+// Callback function using two parameters: sum (which is initialized as 0), and item (the current item in the array)
+// The sum starts as 0 and gets updated to the sum + price of the current item until it finishes and returns the total summedPrice
+const summedPrice = cart.reduce(function(sum, item) {
+    return sum + item["price"];
+}, 0);
 
+console.log(summedPrice);
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -55,6 +60,13 @@ const cart = [
 
 //CODE HERE
 
+function calcFinalPrice(cartTotal, couponValue, tax) {
+    taxTotal = cartTotal * tax;
+
+    return cartTotal + taxTotal - couponValue;
+}
+
+console.log(calcFinalPrice(90, 10, 0.20)); // testing
 
 
 //////////////////PROBLEM 3////////////////////
@@ -79,6 +91,11 @@ const cart = [
 
 /*
     TEXT ANSWER HERE
+    ID (Number): Unique ID of the customer, used to identify the customer.
+    Name (String): Name of the customer.
+    Email (String): Email of the customer, so we can email them a receipt.
+    Order (Array of Strings): All items ordered by the customer. Array of Strings because each item will be identified by its name
+    Total (Number): Price of all the items ordered. Number because the summed price will be a number with decimals
 
 */
 
@@ -88,3 +105,15 @@ const cart = [
 */
 
 //CODE HERE
+
+let customer = {
+    id: 123456,
+    name: "Sabrina Baccam",
+    email: "sabrinabaccam@gmail.com",
+    order: cart.map(function(item) {
+        return item.name;
+    }),
+    total: summedPrice
+};
+
+console.log(customer);
