@@ -32,6 +32,14 @@
 
 //CODE HERE
 
+let pizza = {
+    name: "Pizza",
+    price: 19.99,
+    category: "entree",
+    popularity: 1,
+    rating: 9.3,
+    tags: ["kids", "dairy"]
+};
 
 
 //////////////////PROBLEM 2////////////////////
@@ -44,6 +52,7 @@
 
 //CODE HERE
 
+console.log(pizza.popularity);
 
 /*
     Second, log the second tag in your pizza's
@@ -54,6 +63,7 @@
 
 //CODE HERE
 
+console.log(pizza.tags[1]); 
 
 /*
     Third, destructure the price off of the
@@ -64,6 +74,10 @@
 
 //CODE HERE
 
+let {price} = pizza;
+
+console.log(price);
+
 
 /*
     Fourth, and last, destructure the category
@@ -73,6 +87,8 @@
 */
 
 //CODE HERE
+let {category} = pizza;
+console.log(category);
 
 
 //////////////////PROBLEM 3////////////////////
@@ -88,6 +104,53 @@
 */
 
 //CODE HERE
+
+let foodArr = [
+    {
+        name: "Burger",
+        price: 7.99,
+        category: "entree",
+        popularity: 3,
+        rating: 7.5,
+        tags: ["meat", "gluten"]
+    },
+
+    {
+        name: "Fries",
+        price: 3.99,
+        category: "side",
+        popularity: 2,
+        rating: 8.7,
+        tags: ["shareable"]
+    },
+
+    {
+        name: "Drink",
+        price: 2.99,
+        category: "side",
+        popularity: 4,
+        rating: 7.0,
+        tags: ["ice", "cold"]
+    },
+
+    {
+        name: "Chicken Tenders",
+        price: 12.99,
+        category: "entree",
+        popularity: 6,
+        rating: 9.0,
+        tags: ["meat", "kids", "shareable"]
+    },
+
+    {
+        name: "Cookies",
+        price: 4.99,
+        category: "side",
+        popularity: 9,
+        rating: 9.3,
+        tags: ["dessert", "sugar"]
+    },
+];
 
 
 
@@ -105,8 +168,11 @@
 
 //CODE HERE
 
-// const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+const filteredFood = foodArr.filter(function(food) {
+    return food["tags"].includes("shareable");
+});
 
+console.log(filteredFood);
 
 
 //////////////////PROBLEM 5////////////////////
@@ -150,6 +216,17 @@
 
 //CODE HERE
 
+function filterByProperty(property, number, type) {
+    filteredArr = foodArr.filter(function(food) {
+        if(type === "above") {
+            return food[property] >= number;
+        } else {
+            return food[property] <= number;
+        }
+    });
+
+    return filteredArr;
+};
 
 /*
     Invoke the `filterByProperty` function passing
@@ -159,3 +236,5 @@
 */
 
 //CODE HERE
+console.log(filterByProperty("rating", 8, "above"));
+console.log(filterByProperty("price", 10, "below"));
